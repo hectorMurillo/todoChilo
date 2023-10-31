@@ -110,7 +110,7 @@
                     <div class="modal-body contact">
                         <p>Para nosotros es importante formar equipo contigo, llena el siguiente formulario, y estaremos
                             más cerca de lograrlo 😄</p>
-                        <form id="form-datos-candidatos" action="http://localhost:59653/candidatos/guardar"
+                        <form id="form-datos-candidatos" action="http://hector14-001-site14.etempurl.com/candidatos/guardar"
                             method="post" class="php-email-form" data-aos="fade-up" data-aos-delay="200">
                             <div class="row gy-4">
                                 <div class="col-md-6">
@@ -1446,7 +1446,7 @@
         // Función para hacer una petición HTTP
         function hacerPeticion() {
             var xhr = new XMLHttpRequest();
-            xhr.open("GET", "http://localhost:59653/candidatos/obtenerCategoriasYSubCategorias", true);
+            xhr.open("GET", "http://hector14-001-site14.etempurl.com/candidatos/obtenerCategoriasYSubCategorias", true);
             xhr.onreadystatechange = function () {
                 if (xhr.readyState === 4 && xhr.status === 200) {
                     var respuesta = xhr.responseText;
