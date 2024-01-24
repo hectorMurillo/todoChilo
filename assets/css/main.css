@@ -270,7 +270,7 @@ section {
 /* Home Page Custom Header on page scroll
 ------------------------------*/
 .index-page.scrolled .header {
-  --background-color: transparent;
+  --background-color: black !important;
   --secondary-color: #797171;
   --nav-color: #8b8989;
   --nav-hover-color: #490349;
