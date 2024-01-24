@@ -61,6 +61,12 @@
                     <li><a href="index.html#about">Nosotros</a></li>
                     <li><a href="index.html#services">Eventos</a></li>
                     <li><a href="index.html#portfolio">Galerias</a></li>
+                    <li class="dropdown has-dropdown"><a href="#"><span>Quiero participar</span> <i class="bi bi-chevron-down"></i></a>
+                        <ul class="dd-box-shadow">
+                          <li><a href="#">Soy nuevo 😊</a></li>
+                          <li><a href="#">Ya he participado 😎</a></li>
+                        </ul>
+                    </li>
                     <!-- <li><a href="index.html#team">Team</a></li> -->
                     <!-- <li><a href="blog.html">Blog</a></li> -->
                     <!-- <li class="dropdown has-dropdown"><a href="#"><span>Dropdown</span> <i class="bi bi-chevron-down"></i></a>
@@ -86,8 +92,10 @@
                 <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
             </nav><!-- End Nav Menu -->
 
+        <!-- QUIERO PARTICIPAR BOTONES QUIERO PARTICIPAR BOTONES QUIERO PARTICIPAR BOTONES -->
             <a class="btn-getstarted" href="index.html#about" data-bs-toggle="modal"
-                data-bs-target="#staticBackdrop">Quiero Participar 🎉</a>
+                data-bs-target="#staticBackdrop"></a>
+        <!-- QUIERO PARTICIPAR BOTONES QUIERO PARTICIPAR BOTONES QUIERO PARTICIPAR BOTONES -->
 
         </div>
     </header><!-- End Header -->
@@ -110,8 +118,9 @@
                     <div class="modal-body contact">
                         <p>Para nosotros es importante formar equipo contigo, llena el siguiente formulario, y estaremos
                             más cerca de lograrlo 😄</p>
+                        <h4 id="idEdicion"> </h4>
                         <form id="form-datos-candidatos"
-                            action="http://hector14-001-site14.etempurl.com/candidatos/guardar" method="post"
+                            action="http://localhost:59653/candidatos/guardar" method="post"
                             class="php-email-form" data-aos="fade-up" data-aos-delay="200">
                             <div class="row gy-4">
                                 <div class="col-md-6">
@@ -150,6 +159,7 @@
                             </div>
                             <div class="d-grid gap-2">
                                 <button style="margin-top: 25px;" type="submit" class="btn-block">Enviar datos</button>
+                                <button style="margin-top: 25px;" type="submit" class="btn-block">Tengo código de colaborador</button>
                             </div>
                         </form>
                     </div>
@@ -898,8 +908,8 @@
                             </div>
                         </div>
                         <div class="member-info text-center">
-                            <h4>Walter White</h4>
-                            <span>Chief Executive Officer</span>
+                            <h4>André</h4>
+                            <span>Staff</span>
                             <p>Aliquam iure quaerat voluptatem praesentium possimus unde laudantium vel dolorum
                                 distinctio dire flow</p>
                         </div>
@@ -916,8 +926,8 @@
                             </div>
                         </div>
                         <div class="member-info text-center">
-                            <h4>Sarah Jhonson</h4>
-                            <span>Product Manager</span>
+                            <h4>Efra</h4>
+                            <span>Staff</span>
                             <p>Labore ipsam sit consequatur exercitationem rerum laboriosam laudantium aut quod dolores
                                 exercitationem ut</p>
                         </div>
@@ -934,8 +944,8 @@
                             </div>
                         </div>
                         <div class="member-info text-center">
-                            <h4>William Anderson</h4>
-                            <span>CTO</span>
+                            <h4>Allam</h4>
+                            <span>Staff</span>
                             <p>Illum minima ea autem doloremque ipsum quidem quas aspernatur modi ut praesentium vel
                                 tque sed facilis at qui</p>
                         </div>
@@ -952,8 +962,8 @@
                             </div>
                         </div>
                         <div class="member-info text-center">
-                            <h4>Amanda Jepson</h4>
-                            <span>Accountant</span>
+                            <h4>Evelyn</h4>
+                            <span>Staff</span>
                             <p>Magni voluptatem accusamus assumenda cum nisi aut qui dolorem voluptate sed et veniam
                                 quasi quam consectetur</p>
                         </div>
@@ -970,8 +980,8 @@
                             </div>
                         </div>
                         <div class="member-info text-center">
-                            <h4>Brian Doe</h4>
-                            <span>Marketing</span>
+                            <h4>Guillermo</h4>
+                            <span>Staff</span>
                             <p>Qui consequuntur quos accusamus magnam quo est molestiae eius laboriosam sunt doloribus
                                 quia impedit laborum velit</p>
                         </div>
@@ -979,7 +989,7 @@
 
                     <div class="col-lg-4 col-md-6 member" data-aos="fade-up" data-aos-delay="600">
                         <div class="member-img">
-                            <img src="assets/img/team/team-6.jpg" class="img-fluid" alt="">
+                            <img src="assets/img/team/TC-07.jpg" class="img-fluid" alt="">
                             <div class="social">
                                 <a href="#"><i class="bi bi-twitter"></i></a>
                                 <a href="#"><i class="bi bi-facebook"></i></a>
@@ -988,8 +998,8 @@
                             </div>
                         </div>
                         <div class="member-info text-center">
-                            <h4>Josepha Palas</h4>
-                            <span>Operation</span>
+                            <h4>Karim</h4>
+                            <span>Staff</span>
                             <p>Sint sint eveniet explicabo amet consequatur nesciunt error enim rerum earum et omnis
                                 fugit eligendi cupiditate vel</p>
                         </div>
@@ -1493,14 +1503,32 @@
         let respCatYSubCats = [];
         let categorias = [];
         let subCategorias = [];
+        let edicion = null;
+
+        //Funcion para hacer peticion edicion
+
+        function traerEdicionActual(){
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET","http://localhost:59653//edicion/actualBasica",true);
+            xhr.onreadystatechange = function(){
+                if(xhr.readyState === 4 && xhr.status === 200){
+                    let respuesta = JSON.parse(xhr.responseText);
+                    console.log(JSON.stringify(respuesta));
+                    // var nuevoTitulo = "Nuevo Título";
+                    document.getElementById('idEdicion').innerText = `${respuesta?.data?.descripcion} - ${respuesta?.data?.fechaEventoCorta}`;
+                }
+            };
+            xhr.send();
+        }
+
         // Función para hacer una petición HTTP
         function hacerPeticion() {
             var xhr = new XMLHttpRequest();
-            xhr.open("GET", "http://localhost:59653//candidatos/obtenerCategoriasYSubCategorias", true);
+            xhr.open("GET", "http://localhost:59653/candidatos/obtenerCategoriasYSubCategorias", true);
             // xhr.open("GET", "http://hector14-001-site14.etempurl.com/candidatos/obtenerCategoriasYSubCategorias", true);
             xhr.onreadystatechange = function () {
                 if (xhr.readyState === 4 && xhr.status === 200) {
-                    var respuesta = xhr.responseText;
+                    let respuesta = xhr.responseText;
                     respCatYSubCats = JSON.parse(respuesta);
                     if (respCatYSubCats?.data) {
                         const selectElement = document.getElementById("selectCategoria");
@@ -1558,6 +1586,7 @@
 
         // Evento "DOMContentLoaded" para llamar a la función cuando la página se carga
         document.addEventListener("DOMContentLoaded", function () {
+            traerEdicionActual();
             hacerPeticion();
         });
 

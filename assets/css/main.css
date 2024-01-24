@@ -24,8 +24,8 @@
   --default-color: #212529;
   --default-color-rgb: 33, 37, 41;
   --primary-color: #000000b7;
-  --primary-color-rgb: 211, 24, 149;
-  --secondary-color: #32353a;
+  --primary-color-rgb: 55, 58, 65;
+  --secondary-color: #373a41;
   --secondary-color-rgb: 50, 53, 58;
   --contrast-color: #ffffff;
   --contrast-color-rgb: 255, 255, 255;
@@ -273,7 +273,7 @@ section {
   --background-color: transparent;
   --secondary-color: #797171;
   --nav-color: #8b8989;
-  --nav-hover-color: #d835b5;
+  --nav-hover-color: #490349;
   color: inherit;
 }
 
@@ -2061,7 +2061,7 @@ section {
 }
 
 .contact .php-email-form button[type=submit]:hover {
-  background: rgba(var(--primary-color-rgb), 0.8);
+  background: rgba(var(--primary-color-rgb), 1);
 }
 
 @keyframes animate-loading {
