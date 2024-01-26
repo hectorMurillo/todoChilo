@@ -273,7 +273,7 @@ section {
   --background-color: black !important;
   --secondary-color: #797171;
   --nav-color: #8b8989;
-  --nav-hover-color: #490349;
+  --nav-hover-color: white;
   color: inherit;
 }
 

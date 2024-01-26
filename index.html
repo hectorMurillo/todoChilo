@@ -63,8 +63,8 @@
                     <li><a href="index.html#portfolio">Galerias</a></li>
                     <li class="dropdown has-dropdown"><a href="#"><span>Quiero participar</span> <i class="bi bi-chevron-down"></i></a>
                         <ul class="dd-box-shadow">
-                          <li><a href="#">Soy nuevo 😊</a></li>
-                          <li><a href="#">Ya he participado 😎</a></li>
+                          <li><a  href="index.html#about" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Soy nuevo 😊</a></li>
+                          <li><a href="#" data-bs-toggle="modal" data-bs-target="#modal-he-participado">Ya he participado 😎</a></li>
                         </ul>
                     </li>
                     <!-- <li><a href="index.html#team">Team</a></li> -->
@@ -93,7 +93,7 @@
             </nav><!-- End Nav Menu -->
 
         <!-- QUIERO PARTICIPAR BOTONES QUIERO PARTICIPAR BOTONES QUIERO PARTICIPAR BOTONES -->
-            <a class="btn-getstarted" href="index.html#about" data-bs-toggle="modal"
+            <a class="btn-getstarted" style="visibility: hidden;" href="index.html#about" data-bs-toggle="modal"
                 data-bs-target="#staticBackdrop"></a>
         <!-- QUIERO PARTICIPAR BOTONES QUIERO PARTICIPAR BOTONES QUIERO PARTICIPAR BOTONES -->
 
@@ -159,7 +159,6 @@
                             </div>
                             <div class="d-grid gap-2">
                                 <button style="margin-top: 25px;" type="submit" class="btn-block">Enviar datos</button>
-                                <button style="margin-top: 25px;" type="submit" class="btn-block">Tengo código de colaborador</button>
                             </div>
                         </form>
                     </div>
@@ -173,6 +172,79 @@
             </div>
         </div>
         <!-- End Modal -->
+
+
+
+            <!-- modal-he-participado -->
+            <div class="modal fade" id="modal-he-participado" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Solo llena tu información </h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal-he-participado" aria-label="Close"></button>
+                        </div>
+                        <!-- Spinner para mostrar durante la carga -->
+                        <div id="spinner" class="spinner-border text-primary" role="status" style="display: none;">
+                            <span class="visually-hidden">Cargando...</span>
+                        </div>
+                        <div class="modal-body contact">
+                            <p>Para nosotros es importante formar equipo contigo, llena el siguiente formulario, y estaremos
+                                más cerca de lograrlo 😄</p>
+                            <h4 id="idEdicion"> </h4>
+                            <form id="form-datos-candidatos"
+                                action="http://localhost:59653/candidatos/guardar" method="post"
+                                class="php-email-form" data-aos="fade-up" data-aos-delay="200">
+                                <div class="row gy-4">
+                                    <div class="col-md-6">
+                                        <select id="selectCategoria" name="categoria" class="form-control"></select>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <select id="selectSubCategoria" name="subcategoria" class="form-control"></select>
+                                    </div>
+    
+                                    <div class="col-md-6">
+                                        <input type="text" name="nombreCandidato" class="form-control"
+                                            placeholder="Representante*" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input type="text" name="nombreProyecto" class="form-control"
+                                            placeholder="Proyecto*" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input type="email" name="correoElectronico" class="form-control"
+                                            placeholder="Correo Electrónico*" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input type="number" name="celular" class="form-control" placeholder="Whatsapp*"
+                                            required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input type="text" name="instagram" class="form-control" placeholder="Instagram">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input type="text" name="facebook" class="form-control" placeholder="Facebook">
+                                    </div>
+                                    <div class="col-md-12">
+                                        <textarea name="descripcionProducto" class="form-control"
+                                            placeholder="Cuentanos sobre tu productos...."></textarea>
+                                    </div>
+                                </div>
+                                <div class="d-grid gap-2">
+                                    <button style="margin-top: 25px;" type="submit" class="btn-block">Enviar datos</button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <p class="text-center">Los datos enviados serán tratados por TodoChilo&reg; y se utilizarán para
+                                darle seguimiento al proceso de inscripción como participantes del evento.</p>
+                            <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
+                            <!-- <button type="button" class="btn btn-primary">Understood</button> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Modal -->
 
         <!-- Hero Section - Home Page -->
         <section id="hero" class="hero">
@@ -686,7 +758,7 @@
 
             <!--  Section Title -->
             <div class="container section-title" data-aos="fade-up">
-                <h2>Aportaciones</h2>
+                <h2>Quiero participar</h2>
                 <p><span style="color: red;">* Es necesario llevar tu propio mobiliario</span></p>
                 <p><span style="color: red;">* Por órdenes de protección civil el área de comida tiene un espacio especial.</span></p>
             </div><!-- End Section Title -->
