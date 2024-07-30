@@ -159,7 +159,7 @@
                                     <label class="picture" for="ImgFlyer" tabIndex="0">
                                         <span class="picture__image"></span>
                                     </label>
-                                    <input type="file" name="ImgFlyer" id="ImgFlyer">
+                                    <input type="file" name="ImgFlyer" id="ImgFlyer" crossorigin="anonymous">
                                 </div>
                             </div>
                             <div class="d-grid gap-2">
@@ -1690,72 +1690,93 @@
             const formData = new FormData(this);
             var object = {};
             let input = document.querySelector("#ImgFlyer");
-            formData.append('ImgFlyer',input.files[0]);
-            
-            formData.forEach(function(value, key){
-                object[key] = value;
-                console.log(key, value);
-            });
-            object["Origen"] = "PU";
-            var json = JSON.stringify(object);
+            let file = input.files[0];
+            // let reader = new FileReader();
+            // let archB64 = "";
 
-            fetch('http://localhost/public/candidatos/agregar',{
-                method:'POST',
-                body:formData,
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body:json
-            }).then((response) => response.json())
-                .then((data) => {
-                    // Ocultar el spinner después de recibir la respuesta
-                    spinner.style.display = "none";
-                    if (data?.resultado[0][0]?.pResultado) {
-                        Swal.fire({
-                            title: '¡ Éxito !',
-                            // text: JSON.stringify(data, null, 2),
-                            text: data?.resultado[0][0]?.pMsg,
-                            icon: 'success',
-                            confirmButtonText: 'Entendido',
-                            customClass: {
-                                // title: 'my-title-class', // Clase CSS para el título
-                                confirmButton: 'btn-modales' // Clase CSS para el botón de confirmación
-                            }
-                        });
-                        setTimeout(() => {
-                            location.reload();
-                        }, 2000);
-                    } else {
-                        Swal.fire({
-                            title: '¡ Atención !',
-                            text: data?.resultado[0][0]?.pMsg,
-                            // JSON.stringify(data, null, 2),
-                            icon: 'warning',
-                            confirmButtonText: 'Entendido',
-                            customClass: {
-                                // title: 'my-title-class', // Clase CSS para el título
-                                confirmButton: 'btn-modales' // Clase CSS para el botón de confirmación
-                            }
-                        });
-                    }
-                })
-                .catch((error) => {
-                    // Manejar errores aquí, si es necesario
-                    console.error("Error al enviar la solicitud:", error);
-                    // Ocultar el spinner en caso de error
-                    spinner.style.display = "none";
-                    Swal.fire({
-                        title: '¡ Ups ! esto no es chilo 🙁',
-                        text: `Error al intentar guardar, reporte esto a todo chilo, por favor.`,
-                        // JSON.stringify(data, null, 2),
-                        icon: 'error',
-                        confirmButtonText: 'Entendido',
-                        customClass: {
-                            // title: 'my-title-class', // Clase CSS para el título
-                            confirmButton: 'btn-modales' // Clase CSS para el botón de confirmación
+            // reader.onloadend = function(){
+            //     let blob = base64ToBlob(archB64, 'image/png');
+            //     console.log('Base64 ', archB64);
+            //     formData.append("ImgFlyer",archB64);
+            //     object["ImgFlyer"] = reader.result;
+            // }
+
+
+            formData.forEach(function(value, key){
+                if(key == 'ImgFlyer'){
+                    object[key] = file;
+                }else{
+                    object[key] = value;
+                }
+            });
+        // --hasta aqui todo bien con la img
+
+            object["Origen"] = "PU";
+            setTimeout(() => {
+                var jsonDatos = JSON.stringify(object);
+                // formData.append('datos', jsonDatos)
+                // formData.append('imagen', file)
+                agregaCandidato(formData);
+            }, 2000);
+            
+            function agregaCandidato(json){
+                fetch('http://localhost/public/candidatos/agregar',{
+                    method:'POST',
+                    // headers: {
+                    //     'Content-Type': 'application/json',
+                    // },
+                    body:formData
+                }).then((response) => response.json())
+                    .then((data) => {
+                        // Ocultar el spinner después de recibir la respuesta
+                        spinner.style.display = "none";
+                        if (data?.resultado[0][0]?.pResultado) {
+                            Swal.fire({
+                                title: '¡ Éxito !',
+                                // text: JSON.stringify(data, null, 2),
+                                text: data?.resultado[0][0]?.pMsg,
+                                icon: 'success',
+                                confirmButtonText: 'Entendido',
+                                customClass: {
+                                    // title: 'my-title-class', // Clase CSS para el título
+                                    confirmButton: 'btn-modales' // Clase CSS para el botón de confirmación
+                                }
+                            });
+                            setTimeout(() => {
+                                location.reload();
+                            }, 2000);
+                        } else {
+                            Swal.fire({
+                                title: '¡ Atención !',
+                                text: data?.resultado[0][0]?.pMsg,
+                                // JSON.stringify(data, null, 2),
+                                icon: 'warning',
+                                confirmButtonText: 'Entendido',
+                                customClass: {
+                                    // title: 'my-title-class', // Clase CSS para el título
+                                    confirmButton: 'btn-modales' // Clase CSS para el botón de confirmación
+                                }
+                            });
                         }
+                    })
+                    .catch((error) => {
+                        // Manejar errores aquí, si es necesario
+                        console.error("Error al enviar la solicitud:", error);
+                        // Ocultar el spinner en caso de error
+                        spinner.style.display = "none";
+                        Swal.fire({
+                            title: '¡ Ups ! esto no es chilo 🙁',
+                            text: `Error al intentar guardar, reporte esto a todo chilo, por favor.`,
+                            // JSON.stringify(data, null, 2),
+                            icon: 'error',
+                            confirmButtonText: 'Entendido',
+                            customClass: {
+                                // title: 'my-title-class', // Clase CSS para el título
+                                confirmButton: 'btn-modales' // Clase CSS para el botón de confirmación
+                            }
+                        });
                     });
-                });
+            }
         });
 
     </script>
