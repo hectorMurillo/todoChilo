@@ -1603,8 +1603,10 @@
         function hacerPeticion() {
             var xhr = new XMLHttpRequest();
             xhr.open("GET", "http://localhost:80/public/categorias/listar", true);
+          
             // xhr.open("GET", "https://185.137.92.133:3000/public/categorias/listar", true);
             // xhr.open("GET", "http://hector14-001-site14.etempurl.com/candidatos/obtenerCategoriasYSubCategorias", true);
+          
             xhr.onreadystatechange = function () {
                 if (xhr.readyState === 4 && xhr.status === 200) {
                     let respuesta = xhr.responseText;
